@@ -1,0 +1,3 @@
+# Arquivos de variáveis de ambiente e senhas:
+.env
+node_modules
