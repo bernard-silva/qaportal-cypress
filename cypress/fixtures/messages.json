@@ -1,0 +1,15 @@
+{
+  "invalidEmail": "Please enter a valid email address.",
+
+  "invalidPassword": "Password must be at least 6 characters long.",
+
+  "emailError": "Incorrect email or password.",
+
+  "passwordError": "Incorrect email or password.",
+
+  "lockedAccount": "Account locked due to multiple failed attempts.",
+
+  "internalServerError": "Internal server error. Please try again later.",
+
+  "resetPassword": "If that account exists, we've sent an email with instructions to reset your password."
+}

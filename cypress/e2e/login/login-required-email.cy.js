@@ -3,6 +3,7 @@ import LoginPage from '../../pages/LoginPage'
 describe('Login - Email obrigatório', () => {
 
     let user
+    let messages
 
     before(() => {
 
@@ -13,9 +14,14 @@ describe('Login - Email obrigatório', () => {
 
             })
 
+        cy.fixture('messages').then((data) => {
+            messages = data
+        })
+
     })
 
-    it('Deve exibir mensagem ao informar Senha e deixar Email vazio', () => {
+
+    it('Deve exibir mensagem exigindo email válido', () => {
 
         LoginPage.visit()
 
@@ -26,7 +32,7 @@ describe('Login - Email obrigatório', () => {
         LoginPage.clickSignIn()
 
         LoginPage.validateErrorMessage(
-            'Please enter a valid email address.'
+            messages.invalidEmail
         )
 
     })

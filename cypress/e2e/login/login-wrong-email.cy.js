@@ -1,16 +1,22 @@
 import LoginPage from '../../pages/LoginPage'
 
-describe('Login - Senha obrigatória', () => {
+describe('Tentativa de login com email errado e senha correta', () => {
 
     let user
+    let admin
     let messages
 
     before(() => {
 
         cy.fixture('users')
-            .then((users) => {
+            .then((wrongUsers) => {
 
-                user = users.admin
+                user = wrongUsers.wrong
+
+            })
+            .then((password) => {
+
+                admin = password.admin
 
             })
 
@@ -20,7 +26,8 @@ describe('Login - Senha obrigatória', () => {
 
     })
 
-    it('Deve exibir mensagem exigindo senha', () => {
+
+    it('Deve exibir mensagem de Email ou Senha Incorretos', () => {
 
         LoginPage.visit()
 
@@ -28,10 +35,14 @@ describe('Login - Senha obrigatória', () => {
             Cypress.env(user.email)
         )
 
+        LoginPage.fillPassword(
+            Cypress.env(admin.password)
+        )
+
         LoginPage.clickSignIn()
 
         LoginPage.validateErrorMessage(
-            messages.invalidPassword
+            messages.emailError
         )
 
     })

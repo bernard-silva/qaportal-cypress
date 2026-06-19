@@ -2,8 +2,13 @@ class DashboardPage {
 
     selectors = {
 
-        dashboardTitle: 'h1',
-        logoutButton: '[data-testid="logout"]'
+        dashboardTitle: 'h1'
+
+    }
+
+    elements = {
+
+        dashboardTitle: () => cy.contains('Welcome back'),
 
     }
 
@@ -14,13 +19,24 @@ class DashboardPage {
 
     }
 
-    logout() {
-
-        cy.get(this.selectors.logoutButton)
-            .click()
-
+    getLogoutButton() {
+        return cy.contains('button', 'Log out')
     }
 
+    waitDashboardLoaded() {
+        this.elements.dashboardTitle()
+            .should('be.visible')
+    }
+
+    logout() {
+
+        this.waitDashboardLoaded()
+
+        cy.wait(2000)
+
+        this.getLogoutButton().click()
+
+    }
 }
 
 export default new DashboardPage()

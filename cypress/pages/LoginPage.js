@@ -26,13 +26,19 @@ class LoginPage {
             .type(password)
     }
 
+    clickForgotPassword() {
+
+        cy.contains('button', 'Forgot password?')
+            .click()
+
+    }
+
     // getSignInButton() {
     //     return cy.contains(
     //         'button[type="button"]',
     //         'Sign In'
     //     )
     // }
-
     clickSignIn() {
         cy.contains(
             this.selectors.signInButton,
@@ -45,6 +51,16 @@ class LoginPage {
         this.fillEmail(email)
         this.fillPassword(password)
         this.clickSignIn()
+
+    }
+
+    loginWithEnter(email, password) {
+
+        this.fillEmail(email)
+
+        cy.get(this.selectors.password)
+            .clear()
+            .type(`${password}{enter}`)
 
     }
 

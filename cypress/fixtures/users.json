@@ -4,6 +4,17 @@
     "password": "adminPassword"
   },
 
+  "wrong": {
+    "email": "wrongEmail",
+    "password": "wrongPassword"
+  },
+
+  "invalid": {
+      "email": "invalidEmail",
+      "validEmail": "adminEmail",
+      "password": "weakPassword"
+  },
+
   "locked": {
     "email": "lockedEmail",
     "password": "adminPassword"
